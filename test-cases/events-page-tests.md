@@ -2,7 +2,7 @@
 
 Preconditions:
 
-User opens browser
+- User opens browser
 
 | Step | Action              | Data                                           | Expected Result           |
 | ---- | ------------------- | ---------------------------------------------- | ------------------------- |
