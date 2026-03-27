@@ -1,8 +1,10 @@
-✅ Test Case 1: Verify events list is displayed
+✅ Test ID: 1, Test Title: Verify events list is displayed
 
 Preconditions:
 
 - User opens browser
+
+Test Steps
 
 | Step | Action              | Data                                           | Expected Result           |
 | ---- | ------------------- | ---------------------------------------------- | ------------------------- |
