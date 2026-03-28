@@ -36,11 +36,11 @@ Preconditions:
 
 Test Steps
 
-| Step | Action             | Data                   | Expected Result               |
-| ---- | ------------------ | ---------------------- | ----------------------------- |
-| 1    | Enter search query | 1 letter (e.g. "E")    | Relevant events are displayed |
-| 2    | Enter search query | Full word (e.g. "Eco") | Relevant events are displayed |
-| 3    | Enter search query | Full event name        | Exact event is displayed      |
+| Step | Action             | Data                    | Expected Result               |
+| ---- | ------------------ | ----------------------- | ----------------------------- |
+| 1    | Enter search query | 1 letter (e.g. "S")     | Relevant events are displayed |
+| 2    | Enter search query | Full word (e.g. "Some") | Relevant events are displayed |
+| 3    | Enter search query | Full event name         | Exact event is displayed      |
 
 Actual Result:
 
