@@ -10,7 +10,6 @@ Test Steps
 | ---- | ------------------- | ---------------------------------------------- | ------------------------- |
 | 1    | Go to page          | https://www.greencity.cx.ua/#/greenCity/events | Page loads successfully   |
 | 2    | Observe events list | -                                              | List of events is visible |
-| ---- | ------------------- | ---------------------------------------------- | ------------------------- |
 
 ✅ Test Case ID: 2, Test Title: Verify event details can be opened
 
@@ -23,6 +22,4 @@ Preconditions:
 | Step | Action              | Data                                           | Expected Result            |
 | ---- | ------------------- | ---------------------------------------------- | -------------------------- |
 | 1    | Click on More       | Any event                                      | Event details page opens   |
-| 2    | Check content       | -                                              | Event title, description,  |
-|      |                     |                                                | link, location, save event option, join event option, comments and date are displayed  |
-| ---- | ------------------- | ---------------------------------------------- | -------------------------- |
+| 2    | Check content       | -                                              | Event title, description, link, location, save event option, join event option, comments and date are displayed | 
