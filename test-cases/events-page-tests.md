@@ -27,7 +27,7 @@ Test Steps
 | 1    | Click on More       | Any event                                      | Event details page opens   |
 | 2    | Check content       | -                                              | Event title, description, link, location, save event option, join event option, comments and date are displayed | 
 
-✅ Test Case ID: 3, Test Title: Verify search functionality works correctly
+❌ Test Case ID: 3, Test Title: Verify search functionality works correctly
 
 Preconditions:
 
@@ -46,3 +46,15 @@ Actual Result:
 
 * Search works only for 1 letter input
 * When entering more than 1 letter, no results are displayed
+
+❌ Test Case ID: 4, Test Title : Open invalid URL
+
+Preconditions:
+
+- Browser is opened
+
+Test Steps
+
+| Step | Action             | Data                    | Expected Result               |
+| ---- | ------------------ | ----------------------- | ----------------------------- |
+| 1    | Enter invalid URL | https://www.greencity.cx.ua/#/greenCity/events/invalid-page     | Error message is displayed or user is redirected to a valid page (e.g. 404 or Events page) |
