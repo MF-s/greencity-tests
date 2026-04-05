@@ -2,7 +2,8 @@ GreenCity Tests
 
 📌 Description
 
-This repository contains test cases for the GreenCity Events page.
+This project contains automated UI tests for the GreenCity Events page.
+Tests are implemented using Python, Selenium WebDriver, and unittest framework.
 
 🔗 Tested page
 
@@ -18,6 +19,15 @@ Time filter works coreclty
 
 Open invalid URL
 
+⚙️ How to run tests
+
+1. Install dependencies:
+
+pip install -r requirements.txt
+
+2. Run tests:
+
+python -m unittest discover tests
 
 👤 Author
 
