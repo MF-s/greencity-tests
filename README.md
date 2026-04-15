@@ -1,9 +1,9 @@
-GreenCity Tests
+# GreenCity Tests
 
 📌 Description
 
 This project contains automated UI tests for the GreenCity Events page.
-Tests are implemented using Python, Selenium WebDriver, and unittest framework.
+Tests are implemented using Python, Selenium WebDriver, PO, and pytest framework.
 
 🔗 Tested page
 
