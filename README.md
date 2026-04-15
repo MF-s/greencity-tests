@@ -15,7 +15,7 @@ Events list is displayed
 
 Event details can be opened
 
-Time filter works coreclty
+Search input works coreclty
 
 Open invalid URL
 
@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 2. Run tests:
 
-python -m unittest discover tests
+pytest -v
 
 👤 Author
 

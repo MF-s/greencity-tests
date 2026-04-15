@@ -1,123 +1,71 @@
-import unittest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from utils import wait_for_element
-
-class TestEventsPage(unittest.TestCase):
-    
-    def setUp(self):
-        self.driver = webdriver.Chrome()
-        self.driver.get("https://www.greencity.cx.ua/#/greenCity/events")
-    
-    def tearDown(self):
-        self.driver.quit()
-    
-    # TC1
-    def test_events_cards_present(self):
-        driver = self.driver
-
-        event = wait_for_element(
-            driver,
-            By.XPATH,
-            "//mat-card[contains(@class, 'event-list-item')]"
-        )
-
-        self.assertIsNotNone(event, "Події не знайдені на сторінці")
-
-        events = driver.find_elements(
-            By.XPATH,
-            "//mat-card[contains(@class, 'event-list-item')]"
-        )
-
-        print(f"Знайдено {len(events)} подій")
+from pages.events_page import EventsPage
 
 
-    # TC2
-    def test_open_event_details(self):
-        driver = self.driver
+# TC1
+def test_events_cards_present(home_page):
+    home_page.go_to_events()
 
-        more_button = wait_for_element(
-            driver,
-            By.XPATH,
-            "(//button[contains(., 'Більше')])[1]"
-        )
+    events_page = EventsPage(home_page.driver)
 
-        more_button.click()
+    event = events_page.get_events()
+    assert event is not None, "Події не знайдені"
 
-        details = wait_for_element(
-            driver,
-            By.XPATH,
-            "//div[contains(@class, 'description-block-title')]"
-        )
+    events = events_page.get_all_events()
+    assert len(events) > 0
 
-        self.assertIsNotNone(details, "Сторінка деталей не відкрилась")
-
-        print("Деталі події відкрито успішно")
+    print(f"Знайдено {len(events)} подій")
 
 
-    # TC3
-    def test_search_events(self):
-        driver = self.driver
+# TC2
+def test_open_event_details(home_page):
+    home_page.go_to_events()
 
-        search_button = wait_for_element(
-            driver,
-            By.XPATH,
-            "//span[contains(@class, 'search-img')]"
-        )
-        search_button.click()
+    events_page = EventsPage(home_page.driver)
 
-        search_input = wait_for_element(
-            driver,
-            By.XPATH,
-            "//input[contains(@placeholder, 'Search')]"
-        )
+    events_page.open_first_event()
 
-        search_input.clear()
-        search_input.send_keys("E")
+    details = events_page.is_event_details_opened()
+    assert details is not None, "Сторінка деталей не відкрилась"
 
-        wait_for_element(
-            driver,
-            By.XPATH,
-            "//mat-card[contains(@class, 'event-list-item')]"
-        )
-
-        events_after_E = driver.find_elements(
-            By.XPATH,
-            "//mat-card[contains(@class, 'event-list-item')]"
-        )
-
-        self.assertGreater(len(events_after_E), 0, "Немає результатів для 'E'")
-        print(f"Результати для 'E': {len(events_after_E)}")
-
-        search_input.clear()
-        search_input.send_keys("Eco")
-
-        events_after_Eco = driver.find_elements(
-            By.XPATH,
-            "//mat-card[contains(@class, 'event-list-item')]"
-        )
-
-        self.assertEqual(len(events_after_Eco), 0, "Очікувався баг, але результати є")
-
-        print("БАГ підтверджено: для 'Eco' результатів немає")
+    print("Деталі події відкрито успішно")
 
 
-    # TC4
-    def test_invalid_url_error_message(self):
-        driver = self.driver
+# TC3
+def test_search_events(home_page):
+    home_page.go_to_events()
+    events_page = EventsPage(home_page.driver)
 
-        driver.get("https://www.greencity.cx.ua/#/greenCity/events/invalid-page")
+    events_page.click_search()
 
-        error_message = wait_for_element(
-            driver,
-            By.XPATH,
-            "//div[contains(., 'Сталася помилка')]"
-        )
+    # E
+    events_page.enter_search_text("E")
 
-        self.assertIsNotNone(error_message, "Повідомлення про помилку не з'явилось")
+    events_E = events_page.wait_for_events()
 
-        print("Повідомлення про помилку з'явилось")
+    assert len(events_E) > 0, "Немає результатів для 'E'"
+    print(f"Результати для 'E': {len(events_E)}")
+
+    # Eco (баг)
+    events_page.enter_search_text("Eco")
+
+    import time
+    time.sleep(1)
+
+    events_Eco = events_page.get_events_after_search()
+
+    assert len(events_Eco) == 0, "Очікувався баг, але результати є"
+    print("БАГ підтверджено: для 'Eco' результатів немає")
 
 
-if __name__ == "__main__":
-    unittest.main(verbosity=2)
+# TC4
+def test_invalid_url_error_message(home_page):
+    home_page.go_to_events()
+
+    events_page = EventsPage(home_page.driver)
+
+    events_page.open_invalid_page()
+
+    error = events_page.get_error_message()
+    assert error is not None, "Повідомлення про помилку не з'явилось"
+
+    print("Повідомлення про помилку з'явилось")
