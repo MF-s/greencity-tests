@@ -1,83 +1,27 @@
-🧪 GreenCity UI Test Automation
+GreenCity Tests
 
-Automation framework for testing the GreenCity Events page using Selenium, Pytest, and Allure.
+📌 Description
 
-🚀 Tech Stack
+This project contains automated UI tests for the GreenCity Events page.
+Tests are implemented using Python, Selenium WebDriver, and unittest framework.
 
-- Python 3.10+
-- Selenium WebDriver
-- Pytest
-- Allure Report
-- Page Object Model (POM)
-- Component-based architecture
+🔗 Tested page
 
-📁 Project Structure
+https://www.greencity.cx.ua/#/greenCity/events
 
-greencity-tests/
-├── src/
-│   ├── pages/
-│   │   ├── base_page.py
-│   │   ├── home_page.py
-│   │   └── events_page.py
-│   ├── components/
-│   │   ├── base_component.py
-│   │   └── event_card.py
-├── tests/
-│   └── test_events_page.py
-├── conftest.py
-├── pytest.ini
-├── requirements.txt
-└── README.md
+🧪 Test Coverage
 
-🧩 Architecture
+Events list is displayed
 
-🔹 Page Objects
+Event details can be opened
 
-Located in src/pages/
+Search input works coreclty
 
-Contain logic for full pages:
+Open invalid URL
 
-- HomePage — navigation
-- EventsPage — events functionality
+⚙️ How to run tests
 
-🔹 Components
-
-Located in src/components/
-
-Reusable UI elements:
-
-- BaseComponent — base class
-- EventCard — single event card
-
-🔹 Tests
-
-Located in tests/
-
-Contain test scenarios using Pytest + Allure.
-
-⚙️ Setup
-
-1. Clone repository
-
-git clone <your-repo-url>
-
-cd greencity-tests
-
-2. Create virtual environment
-
-python -m venv .venv
-
-3. Activate venv
-
-Windows (PowerShell):
-
-.\.venv\Scripts\activate
-
-Windows (CMD):
-
-.venv\Scripts\activate
-
-4. Install dependencies
+1. Install dependencies:
 
 pip install -r requirements.txt
 
@@ -148,4 +92,3 @@ Compatible ChromeDriver (or Selenium Manager)
 🧑‍💻 Author
 
 Maksymilian Finohenov (SoftServe course)
-
